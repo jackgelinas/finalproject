@@ -1,14 +1,14 @@
 #!/usr/bin/env bash
 # File: guessinggame.sh
 function queryuser {
-	echo "How many files are in the current directory? (Please enter answer as an integer)"
+	echo "How many files are in the current directory? (Please enter answer as a single integer)"
 	read answer
 	while [[ ! $answer =~ ^[0-9]+$ ]]
 	do
-        	clear && echo "Your answer was not an integer, please try again." && queryuser
+        	clear && echo "Your answer was not an a single integer (eg. '16'), please try again." && queryuser
 	done
 }
-numfiles=$(ls -al | wc -l) && numfiles=$(echo "$numfiles - 1" | bc)
+numfiles=$(ls -al | wc -l) && numfiles=$(echo "$numfiles - 3" | bc)
 queryuser
 if [[ $answer -gt $numfiles ]]
 then
@@ -20,8 +20,6 @@ then
 	bash guessinggame.sh
 elif [[ $answer -eq $numfiles ]]
 then
-	clear && echo "Your answer was correct!!! Thanks for playing!"
-else
-	clear && echo "Error. Please try again."
-	bash guessinggame.sh
+	make && clear && echo "Your answer was correct!!! Thanks for playing!"
 fi
+
