@@ -20,6 +20,6 @@ then
 	bash guessinggame.sh
 elif [[ $answer -eq $numfiles ]]
 then
-	make && clear && echo "Your answer was correct!!! Thanks for playing!"
+	make clean && make && clear && echo "Your answer was correct!!! Thanks for playing!"
 fi
 
